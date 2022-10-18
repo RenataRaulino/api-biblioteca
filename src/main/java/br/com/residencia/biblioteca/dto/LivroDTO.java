@@ -1,29 +1,62 @@
 package br.com.residencia.biblioteca.dto;
 
-
-
-import br.com.residencia.biblioteca.entity.Livro;
+import java.time.Instant;
 
 public class LivroDTO {
 	
 	 
-	 private Integer id;
+	 private Integer codigoLivro;
 	 private String nomeLivro;
+	 private String nomeAutor;
+	 private Instant dataLancamento;
+	 private Integer codigoIsbn;
+	
+	 public LivroDTO() {
+			
+		}
 	 
-	public LivroDTO() {
+	 
+	 public LivroDTO(Integer codigoLivro, String nomeLivro, String nomeAutor, Instant dataLancamento,
+			Integer codigoIsbn) {
 		super();
-		// TODO Auto-generated constructor stub
+		this.codigoLivro = codigoLivro;
+		this.nomeLivro = nomeLivro;
+		this.nomeAutor = nomeAutor;
+		this.dataLancamento = dataLancamento;
+		this.codigoIsbn = codigoIsbn;
 	}
-	public LivroDTO(Livro obj) {
-		super();
-		this.id = obj.getCodigoLivro();
-		this.nomeLivro = obj.getNomeLivro();
+
+
+
+	public String getNomeAutor() {
+		return nomeAutor;
 	}
-	public Integer getId() {
-		return id;
+
+	public void setNomeAutor(String nomeAutor) {
+		this.nomeAutor = nomeAutor;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+
+	public Instant getDataLancamento() {
+		return dataLancamento;
+	}
+
+	public void setDataLancamento(Instant dataLancamento) {
+		this.dataLancamento = dataLancamento;
+	}
+
+	public Integer getCodigoIsbn() {
+		return codigoIsbn;
+	}
+
+	public void setCodigoIsbn(Integer codigoIsbn) {
+		this.codigoIsbn = codigoIsbn;
+	}
+	
+	public Integer getCodigoLivro() {
+		return codigoLivro;
+	}
+	public void setCodigoLivro(Integer codigoLivro) {
+		this.codigoLivro = codigoLivro;
 	}
 	public String getNomeLivro() {
 		return nomeLivro;
@@ -31,6 +64,10 @@ public class LivroDTO {
 	public void setNomeLivro(String nomeLivro) {
 		this.nomeLivro = nomeLivro;
 	}
+	 
+	
+	
+	
 	
 
 }

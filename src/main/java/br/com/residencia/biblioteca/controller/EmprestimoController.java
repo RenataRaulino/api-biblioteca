@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import br.com.residencia.biblioteca.dto.EmprestimoDTO;
 import br.com.residencia.biblioteca.entity.Emprestimo;
 import br.com.residencia.biblioteca.service.EmprestimoService;
 
@@ -28,6 +28,12 @@ public class EmprestimoController {
 		return new ResponseEntity<>(emprestimoService.getAllEmprestimos(),
 				HttpStatus.OK);
 	}
+	
+	/*@GetMapping("/dto")
+	public ResponseEntity<List<EmprestimoDTO>> getAllEmprestimosDTO(){
+		return new ResponseEntity<>(emprestimoService.getAllEmprestimosDTO(),
+				HttpStatus.OK);
+	}*/
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Emprestimo> getEmprestimoById(@PathVariable Integer id) {
@@ -52,7 +58,13 @@ public class EmprestimoController {
 		return new ResponseEntity<>(emprestimoService.updateEmprestimo(emprestimo, id),
 				HttpStatus.OK);
 	}
-	
+
+	@PutMapping("/dto/{id}")
+	public ResponseEntity<EmprestimoDTO> updateEmprestimoDTO(@RequestBody EmprestimoDTO emprestimoDTO, 
+			@PathVariable Integer id){
+		return new ResponseEntity<>(emprestimoService.updateEmprestimoDTO(emprestimoDTO, id),
+				HttpStatus.OK);
+	}
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Emprestimo> deleteEmprestimo(@PathVariable Integer id) {
 		Emprestimo emprestimo = emprestimoService.getEmprestimoById(id);

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.residencia.biblioteca.dto.AlunoDTO;
 import br.com.residencia.biblioteca.entity.Aluno;
 import br.com.residencia.biblioteca.service.AlunoService;
 
@@ -27,6 +29,13 @@ public class AlunoController {
 		return new ResponseEntity<>(alunoService.getAllAlunos(),
 				HttpStatus.OK);
 	}
+	
+
+	/*@GetMapping("/dto")
+	public ResponseEntity<List<AlunoDTO>> getAllAlunosDTO(){
+		return new ResponseEntity<>(alunoService.getAllAlunosDTO(),
+				HttpStatus.OK);
+	}*/
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Aluno> getAlunoById(@PathVariable Integer id) {
@@ -51,6 +60,14 @@ public class AlunoController {
 		return new ResponseEntity<>(alunoService.updateAluno(aluno, id),
 				HttpStatus.OK);
 	}
+	
+	@PutMapping("/dto/{id}")
+	public ResponseEntity<AlunoDTO> updateAlunoDTO(@RequestBody AlunoDTO alunoDTO, 
+			@PathVariable Integer id){
+		return new ResponseEntity<>(alunoService.updateAlunoDTO(alunoDTO, id),
+				HttpStatus.OK);
+	}
+	
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Aluno> deleteAluno(@PathVariable Integer id) {
