@@ -4,11 +4,16 @@ import java.util.List;
 //import java.util.Set;
 
 public class EditoraDTO {
+	
 	private Integer codigoEditora;
 	private String nome;
 	private List<LivroDTO> listaLivrosDTO;
 	
-	
+	@Override
+	public String toString() {
+		return "EditoraDTO [codigoEditora=" + codigoEditora + ", nome=" + nome + ", listaLivrosDTO=" + listaLivrosDTO
+				+ "]";
+	}
 
 	public List<LivroDTO> getListaLivrosDTO() {
 		return listaLivrosDTO;

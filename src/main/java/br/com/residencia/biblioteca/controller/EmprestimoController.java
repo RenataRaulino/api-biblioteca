@@ -28,12 +28,12 @@ public class EmprestimoController {
 		return new ResponseEntity<>(emprestimoService.getAllEmprestimos(),
 				HttpStatus.OK);
 	}
-	
-	/*@GetMapping("/dto")
+	@GetMapping("/dto")
 	public ResponseEntity<List<EmprestimoDTO>> getAllEmprestimosDTO(){
 		return new ResponseEntity<>(emprestimoService.getAllEmprestimosDTO(),
 				HttpStatus.OK);
-	}*/
+	}
+
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Emprestimo> getEmprestimoById(@PathVariable Integer id) {
@@ -52,6 +52,11 @@ public class EmprestimoController {
 				HttpStatus.CREATED);
 	}
 	
+	@PostMapping("/dto")
+	public ResponseEntity<EmprestimoDTO> saveEmprestimoDTO(@RequestBody EmprestimoDTO emprestimoDTO) {
+		return new ResponseEntity<>(emprestimoService.saveEmprestimoDTO(emprestimoDTO),
+				HttpStatus.CREATED);
+	}
 	@PutMapping("/{id}")
 	public ResponseEntity<Emprestimo> updateEmprestimo(@RequestBody Emprestimo emprestimo, 
 			@PathVariable Integer id){

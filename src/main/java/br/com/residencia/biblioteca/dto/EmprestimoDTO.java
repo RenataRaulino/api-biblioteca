@@ -8,7 +8,7 @@ public class EmprestimoDTO {
 	private Integer codigoEmprestimo;
 	private Instant dataEmprestimo;
 	private Instant dataEntrega;
-	private BigDecimal valorEmprestimo;
+	//private BigDecimal valorEmprestimo;
 	
 	
 	public Integer getCodigoEmprestimo() {
@@ -29,14 +29,14 @@ public class EmprestimoDTO {
 	public void setDataEntrega(Instant dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
-	public BigDecimal getValorEmprestimo() {
+	/*public BigDecimal getValorEmprestimo() {
 		return valorEmprestimo;
 	}
 	public void setValorEmprestimo(BigDecimal valorEmprestimo) {
 		this.valorEmprestimo = valorEmprestimo;
 	}
 
-	/*@ManyToOne
+	@ManyToOne
 	@JoinColumn(name = "numeromatriculaaluno", 
 		referencedColumnName = "numeromatriculaaluno")
 	private Aluno aluno;

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.residencia.biblioteca.dto.ConsultaCnpjDTO;
 import br.com.residencia.biblioteca.dto.EditoraDTO;
 import br.com.residencia.biblioteca.entity.Editora;
 import br.com.residencia.biblioteca.service.EditoraService;
@@ -41,6 +42,7 @@ public class EditoraController {
 		return new ResponseEntity<>(editoraService.getAllEditorasLivrosDTO(),
 				HttpStatus.OK);
 	}
+	
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Editora> getEditoraById(@PathVariable Integer id) {
@@ -65,6 +67,13 @@ public class EditoraController {
 				HttpStatus.CREATED);
 	}
 	
+	@GetMapping("/cnpj/{cnpj}")
+	public ResponseEntity<Editora> saveEditoraFromApi(@PathVariable String cnpj) {
+		return new ResponseEntity<>(editoraService.saveEditoraFromApi(cnpj),
+				HttpStatus.CREATED);
+		
+		
+	}
 	@PutMapping("/{id}")
 	public ResponseEntity<Editora> updateEditora(@RequestBody Editora editora, 
 			@PathVariable Integer id){
@@ -88,5 +97,17 @@ public class EditoraController {
 			return new ResponseEntity<>(editoraService.deleteEditora(id),
 					HttpStatus.OK);
 	}
+	
+	@GetMapping("/consulta-cnpj/{cnpj}")
+	public ResponseEntity<ConsultaCnpjDTO> getConsultaCnpjApiExterna(@PathVariable String cnpj) {
+		ConsultaCnpjDTO consultaCnpjDTO = editoraService.consultaCnpjApiExterna(cnpj);
+		if(null != consultaCnpjDTO)
+			return new ResponseEntity<>(consultaCnpjDTO,
+					HttpStatus.OK);
+		else
+			return new ResponseEntity<>(consultaCnpjDTO,
+					HttpStatus.NOT_FOUND);
+	}
+	
 
 }
